@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses App</title>
+    <link rel="stylesheet" href="{% static 'Courses/styles.css' %}">
+    <script defer src="{% static 'Courses/app.js' %}"></script>
+</head>
+
+<body data-page="base">
+    <div class="container">
+        <div class="topbar">
+            <h1 class="brand">Courses App</h1>
+            <nav class="nav">
+                <a href="/" class="nav-link active">Home</a>
+                <a href="/courses" class="nav-link">Courses</a>
+            </nav>
+        </div>
+
+        <div class="card center">
+            <h2>Hi <span id="greetName">Student</span>, Welcome to Courses App 👋</h2>
+            <p class="muted">اكتبي اسمك تحت وجربي زر “تحديث”، بيتحدث الترحيب بدون تحديث الصفحة.</p>
+
+            <form id="nameForm" class="row center gap">
+                <input id="nameInput" class="input" type="text" placeholder="Student" />
+                <button type="submit" class="btn">تحديث الترحيب</button>
+            </form>
+
+            <div class="gap center">
+                <a href="/courses" class="btn link">اذهب لصفحة المقررات</a>
+                <button id="toggleMode" class="btn outline" type="button">تبديل الوضع (فاتح/داكن)</button>
+            </div>
+        </div>
+
+        <footer class="footer">© :) Django • Demo by Shooq</footer>
+    </div>
+</body>
+</html>

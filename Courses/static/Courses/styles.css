@@ -1,0 +1,124 @@
+/* الأساسيات */
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+  line-height: 1.6;
+  transition: background .25s ease, color .25s ease;
+}
+
+/* ✨ الوضع الافتراضي = داكن عبر :root */
+:root{
+  --bg: #0f172a;        /* خلفية */
+  --card:#111827;       /* كرت */
+  --text:#e5e7eb;       /* نص */
+  --muted:#94a3b8;      /* ثانوي */
+  --primary:#60a5fa;    /* أزرق */
+  --accent:#22d3ee;     /* سماوي */
+  --border:#1f2937;     /* حدود */
+}
+body { background: linear-gradient(135deg,#0b1220,var(--bg)); color:var(--text); }
+
+.container{ max-width:920px; margin:32px auto; padding:0 16px; }
+.topbar{ display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
+.brand{ font-size:22px; margin:0; }
+.nav{ display:flex; gap:12px; }
+.nav-link{ color:var(--muted); text-decoration:none; padding:6px 10px; border-radius:8px; }
+.nav-link:hover{ background:rgba(255,255,255,.06); color:var(--text); }
+.nav-link.active{ color:var(--accent); }
+
+.card{
+  background:var(--card); border:1px solid var(--border);
+  border-radius:16px; padding:24px; box-shadow:0 8px 24px rgba(0,0,0,.25);
+}
+.title{ margin:0 0 8px; font-weight:700; }
+.muted{ color:var(--muted); }
+.center{ text-align:center; }
+.row{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+.space-between{ justify-content:space-between; }
+.gap{ gap:10px; margin-top:12px; }
+
+.input{
+  background:#0b1220; border:1px solid var(--border); color:var(--text);
+  padding:10px 12px; border-radius:10px; outline:none;
+}
+.input::placeholder{ color:var(--muted); }
+.input:focus{ border-color:var(--accent); box-shadow:0 0 0 3px rgba(34,211,238,.15); }
+
+.btn{
+  background:linear-gradient(90deg,var(--primary),var(--accent));
+  color:#061016; border:none; padding:10px 14px; border-radius:12px;
+  cursor:pointer; font-weight:600; transition:transform .15s ease, filter .15s ease;
+}
+.btn:hover{ filter:brightness(1.08); }
+.btn.outline{ background:transparent; color:var(--text); border:1px solid var(--border); }
+.btn.link{ text-decoration:none; display:inline-block; }
+
+.footer{ color:var(--muted); margin-top:18px; text-align:center; }
+
+/* جدول */
+.table-wrap{ overflow-x:auto; margin-top:10px; }
+.table{ width:100%; border-collapse:collapse; border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+.table thead th{ text-align:left; padding:12px; background:#0b1220; color:var(--muted); cursor:pointer; user-select:none; }
+.table tbody td{ padding:12px; border-top:1px solid var(--border); }
+.table tbody tr:hover{ background:rgba(96,165,250,.08); }
+.zebra tbody tr:nth-child(odd){ background:rgba(255,255,255,.03); }
+
+/* 🌞 الوضع الفاتح عند إضافة body.light فقط */
+body.light{
+  --bg:#f3f4f6; --card:#ffffff; --text:#0f172a; --muted:#475569;
+  --primary:#2563eb; --accent:#06b6d4; --border:#e5e7eb;
+  background: linear-gradient(135deg,#eef2ff,#f8fafc);
+}
+body.light .nav-link:hover{ background:rgba(0,0,0,.06); }
+body.light .table thead th{ background:#f1f5f9; color:#334155; }
+body.light .table tbody td{ border-top:1px solid #e5e7eb; }
+body.light .zebra tbody tr:nth-child(odd){ background:#f9fafb; }
+
+/* حالة زر التلوين */
+#zebraBtn.active{ box-shadow:0 0 8px rgba(34,211,238,.35); transform:scale(1.03); }
+/* حقول الإدخال الأساسية */
+.input {
+  width: 220px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #0b1220;         /* غامق افتراضي */
+  color: var(--text);
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.input::placeholder {
+  color: var(--muted);
+}
+
+.input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(34,211,238,.15);
+}
+
+/* ✨ في الوضع الفاتح نخليها فاتحة */
+body.light .input {
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid #d1d5db;
+}
+
+body.light .input::placeholder {
+  color: #64748b;
+}
+/* ====== انتقال ناعم بين الوضعين ====== */
+body {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ====== حركة خفيفة للأزرار ====== */
+button, .btn {
+  transition: all 0.25s ease;
+}
+
+button:hover, .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}

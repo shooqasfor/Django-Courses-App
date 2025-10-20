@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses List</title>
+    <link rel="stylesheet" href="{% static 'Courses/styles.css' %}">
+    <script defer src="{% static 'Courses/app.js' %}"></script>
+</head>
+
+<body data-page="courses">
+    <div class="container">
+        <div class="topbar">
+            <h1 class="brand">Courses App</h1>
+            <nav class="nav">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/courses" class="nav-link active">Courses</a>
+            </nav>
+        </div>
+
+        <div class="card">
+            <h2 class="title">قائمة المقررات</h2>
+
+            <input id="searchBox" class="input" type="text" placeholder="بحث بالاسم...">
+
+            <div class="table-wrap">
+                <table class="table" id="coursesTable">
+                    <thead>
+                        <tr>
+                            <th data-sort="number">Course Number ▲▼</th>
+                            <th data-sort="name">Course Name ▲▼</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for course in courses %}
+                        <tr>
+                            <td class="num">{{ course.course_number }}</td>
+                            <td class="name">{{ course.course_name }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="gap space-between">
+                <a href="/" class="btn link">رجوع</a>
+                <button id="zebraBtn" class="btn outline" type="button">تفعيل/إلغاء التلوين المتناوب</button>
+            </div>
+        </div>
+
+        <footer class="footer">© Django • جدول تجريبي</footer>
+    </div>
+</body>
+</html>
